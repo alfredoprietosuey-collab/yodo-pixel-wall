@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ APP_NAME }}</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">💧</span>
+      <span class="name">{{ APP_NAME }}</span>
+    </div>
+    <nav class="nav">
+      <a href="/hoy">Hoy</a>
+      <a href="/team/demo">Team</a>
+      <a href="/transparencia">Transparencia</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <span>1 check‑in = 1 gota · {{ DROPS_PER_LITER }} gotas = 1L (equivalencia)</span>
+  </footer>
+
+  <script src="/static/app.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

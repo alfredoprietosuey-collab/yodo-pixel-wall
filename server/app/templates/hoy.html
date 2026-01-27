@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="grid">
+  <div class="card">
+    <h1>Check‑in de hoy</h1>
+
+    <div class="streak">
+      <div>
+        <div class="kpi">{{ streak }}</div>
+        <div class="kpi_label">🔥 Racha</div>
+      </div>
+      <div>
+        <div class="kpi">{{ best_streak }}</div>
+        <div class="kpi_label">🏆 Mejor</div>
+      </div>
+      <div>
+        <div class="kpi">{{ drops_mtd }}</div>
+        <div class="kpi_label">💧 Gotas mes</div>
+      </div>
+    </div>
+
+    <button id="btn-checkin" class="btn primary" {% if checked_in_today %}disabled{% endif %}>
+      {% if checked_in_today %}Hoy ya regaste ✅{% else %}Regar hoy{% endif %}
+    </button>
+
+    <div class="impact">
+      <div class="impact_row">
+        <span>Equivalencia</span>
+        <strong>{{ DROPS_PER_LITER }} gotas = 1L</strong>
+      </div>
+      <div class="impact_row">
+        <span>Este mes (estimado)</span>
+        <strong>{{ "%.1f"|format(liters_mtd) }} L</strong>
+      </div>
+    </div>
+
+    <p class="tiny muted"><a href="/transparencia">¿Cómo se convierte en agua?</a></p>
+  </div>
+
+  <div class="card">
+    <h2>Mapa global semanal</h2>
+    <div class="progress">
+      <div class="bar" style="width: {{ weekly_pct }}%"></div>
+    </div>
+    <div class="progress_meta">
+      <span>{{ global_week_checkins }} / {{ WEEKLY_GOAL_CHECKINS }} check-ins</span>
+      <strong>{{ weekly_pct }}%</strong>
+    </div>
+
+    <div class="pixel_map" data-filled="{{ weekly_pct }}"></div>
+    <p class="muted tiny">Se reinicia cada semana. Al 100% desbloqueáis un “oasis comunitario”.</p>
+  </div>
+
+  <div class="card">
+    <h2>Team (demo)</h2>
+    <p class="muted">Campaña de ejemplo: <a href="/team/demo">ver landing</a></p>
+  </div>
+</section>
+{% endblock %}
