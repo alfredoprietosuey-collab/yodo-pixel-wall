@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Click por Agua</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <meta name="theme-color" content="#ffffff" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">💧</div>
+      <div class="brand_text">
+        <div class="name">Click por Agua</div>
+        <div class="tag">10 segundos al día</div>
+      </div>
+    </div>
+
+    <nav class="segmented" aria-label="Navegación">
+      <a class="seg" href="#hoy">Hoy</a>
+      <a class="seg" href="#team">Team</a>
+      <a class="seg" href="#transparencia">Transparencia</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section id="hoy" class="mapfirst">
+      <div class="map_stage" id="mapa">
+        <div class="map_top">
+          <div class="map_titles">
+            <div class="eyebrow">Mapa global semanal</div>
+            <div class="map_title">Riega el mundo, pixel a pixel.</div>
+            <div class="map_sub">El mapa se completa con el progreso de esta semana.</div>
+          </div>
+
+          <div class="map_kpis">
+            <div class="kpi_row">
+              <div class="badge" id="weekly_badge">0.0%</div>
+            </div>
+            <div class="progress" aria-label="Progreso semanal">
+              <div class="bar" id="weekly_bar"></div>
+            </div>
+            <div class="progress_meta">
+              <span><strong id="weekly_count">0</strong> / <span id="weekly_goal">5000</span> check‑ins</span>
+              <span class="muted">Semana actual</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="map_shell map_shell_big">
+          <canvas id="world_canvas" width="1000" height="500" aria-label="Mapa del mundo pixel"></canvas>
+          <div class="map_glow"></div>
+        </div>
+
+        <div class="hint muted">Al 100% aparece un “oasis” visual.</div>
+      </div>
+
+      <aside class="panel" aria-label="Panel de check-in">
+        <div class="panel_head">
+          <div class="panel_title">Check‑in</div>
+          <div class="today">Hoy: <strong id="today">—</strong></div>
+        </div>
+
+        <p class="panel_sub">Sin donaciones. Solo entra y suma una gota.</p>
+
+        <div class="cta_row">
+          <button id="btn-checkin" class="btn primary">
+            <span class="btn_icon" aria-hidden="true">💧</span>
+            <span id="btn-text">Regar hoy</span>
+          </button>
+        </div>
+
+        <div class="note" id="checkin-note">Mantén tu racha.</div>
+
+        <div class="stats panel_stats">
+          <div class="stat">
+            <div class="stat_num" id="streak">0</div>
+            <div class="stat_label">Racha</div>
+          </div>
+          <div class="stat">
+            <div class="stat_num" id="best">0</div>
+            <div class="stat_label">Mejor</div>
+          </div>
+          <div class="stat">
+            <div class="stat_num" id="drops_mtd">0</div>
+            <div class="stat_label">Gotas mes</div>
+          </div>
+        </div>
+
+        <div class="impact_card">
+          <div class="row">
+            <span class="muted">Equivalencia</span>
+            <strong><span id="dpl">10</span> gotas = 1L</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Este mes</span>
+            <strong><span id="liters_mtd">0.0</span> L</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Objetivo</span>
+            <strong><span id="monthly_goal">20000</span> check‑ins</strong>
+          </div>
+        </div>
+
+        <a class="tinylink" href="#transparencia">Cómo se convierte en agua</a>
+      </aside>
+    </section>
+
+    <section class="grid2">
+      <div class="card" id="team">
+        <div class="card_header">
+          <div>
+            <div class="card_title">Team (campaña)</div>
+            <div class="card_sub" id="team_claim">—</div>
+          </div>
+          <button class="btn" id="btn-join">Unirme</button>
+        </div>
+
+        <div class="team_name" id="team_name">—</div>
+
+        <div class="progress">
+          <div class="bar" id="team_bar"></div>
+        </div>
+        <div class="progress_meta">
+          <span><strong id="team_count">0</strong> / <span id="team_goal">50000</span> check‑ins</span>
+          <span class="muted"><span id="team_pct">0.0</span>%</span>
+        </div>
+
+        <div class="share">
+          <button class="btn" id="btn-share">Copiar link</button>
+          <input class="copybox" id="share_link" readonly />
+        </div>
+
+        <div class="muted tiny">Modo demo: contadores locales. Con API real serán globales.</div>
+      </div>
+
+      <div class="card" id="transparencia">
+        <div class="card_header">
+          <div>
+            <div class="card_title">Transparencia</div>
+            <div class="card_sub">Sin fricción</div>
+          </div>
+        </div>
+
+        <p class="copy">
+          No te pedimos dinero. El agua se financia con <strong>patrocinadores</strong> y (si aplica) publicidad cuando haces tu check‑in.
+        </p>
+
+        <div class="inset">
+          <ol class="list">
+            <li>Haces un check‑in diario (1 gota).</li>
+            <li>Eso genera valor para patrocinadores/anuncios.</li>
+            <li>Destinamos una parte a proyectos de agua.</li>
+            <li>Publicamos “litros confirmados” al cierre de mes (con backend).</li>
+          </ol>
+        </div>
+
+        <div class="muted tiny">Equivalencia: <span id="dpl2">10</span> gotas = 1L.</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>Click por Agua · V6</div>
+      <div class="muted">Diseño “Apple-like” · map‑first.</div>
+    </footer>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
